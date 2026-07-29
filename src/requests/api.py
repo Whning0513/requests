@@ -55,6 +55,14 @@ def request(
     :param cert: (optional) if String, path to ssl client cert file (.pem). If Tuple, ('cert', 'key') pair.
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
+    This includes common subclasses such as
+    :class:`~requests.exceptions.ConnectionError`,
+    :class:`~requests.exceptions.Timeout`, :class:`~requests.exceptions.SSLError`,
+    :class:`~requests.exceptions.InvalidURL`, and
+    :class:`~requests.exceptions.TooManyRedirects`. HTTP status codes do not
+    raise an exception automatically; call
+    :meth:`~requests.Response.raise_for_status` when that behavior is needed.
 
     Usage::
 
@@ -82,6 +90,7 @@ def get(
     :param \*\*kwargs: Optional arguments that ``request`` takes.
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
     """
 
     return request("get", url, params=params, **kwargs)
@@ -94,6 +103,7 @@ def options(url: _t.UriType, **kwargs: Unpack[_t.RequestKwargs]) -> Response:
     :param \*\*kwargs: Optional arguments that ``request`` takes.
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
     """
 
     return request("options", url, **kwargs)
@@ -108,6 +118,7 @@ def head(url: _t.UriType, **kwargs: Unpack[_t.RequestKwargs]) -> Response:
         opposed to the default :meth:`request` behavior).
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
     """
 
     kwargs.setdefault("allow_redirects", False)
@@ -129,6 +140,7 @@ def post(
     :param \*\*kwargs: Optional arguments that ``request`` takes.
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
     """
 
     return request("post", url, data=data, json=json, **kwargs)
@@ -146,6 +158,7 @@ def put(
     :param \*\*kwargs: Optional arguments that ``request`` takes.
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
     """
 
     return request("put", url, data=data, **kwargs)
@@ -163,6 +176,7 @@ def patch(
     :param \*\*kwargs: Optional arguments that ``request`` takes.
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
     """
 
     return request("patch", url, data=data, **kwargs)
@@ -175,6 +189,7 @@ def delete(url: _t.UriType, **kwargs: Unpack[_t.RequestKwargs]) -> Response:
     :param \*\*kwargs: Optional arguments that ``request`` takes.
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
+    :raises requests.exceptions.RequestException: If an error occurs while preparing or sending the request.
     """
 
     return request("delete", url, **kwargs)
