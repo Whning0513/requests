@@ -260,10 +260,10 @@ self-signed certificate, a hostname mismatch, or a missing CA bundle.
 
 To investigate the failure, check the URL and the certificate presented by the
 server, and make sure that the system's CA certificates are up to date. You can
-also pass a custom CA bundle with `verify` or set
-`REQUESTS_CA_BUNDLE` as described above.
+also pass a custom CA bundle with ``verify`` or set
+``REQUESTS_CA_BUNDLE`` as described above.
 
-Do not disable verification in production. If `verify=False` is used for
+Do not disable verification in production. If ``verify=False`` is used for
 local testing, keep it limited to that request and restore the default
 afterwards; it disables certificate and hostname verification.
 
