@@ -251,6 +251,22 @@ during local development or testing.
 
 By default, ``verify`` is set to True. Option ``verify`` only applies to host certs.
 
+Troubleshooting SSL Verification Errors
+---------------------------------------
+
+An :class:`~requests.exceptions.SSLError` usually means that the server's
+certificate could not be verified. Common causes include an expired or
+self-signed certificate, a hostname mismatch, or a missing CA bundle.
+
+To investigate the failure, check the URL and the certificate presented by the
+server, and make sure that the system's CA certificates are up to date. You can
+also pass a custom CA bundle with `verify` or set
+`REQUESTS_CA_BUNDLE` as described above.
+
+Do not disable verification in production. If `verify=False` is used for
+local testing, keep it limited to that request and restore the default
+afterwards; it disables certificate and hostname verification.
+
 Client Side Certificates
 ------------------------
 
